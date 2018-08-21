@@ -12,7 +12,7 @@ node {
     
     stage('mv'){
         sh "mkdir -p ../workdir_user"
-        sh "rm -rf | find -not -name 'node_modules' ../workdir_user"
+        sh "rm -rf | find ../workdir_user -not -name 'node_modules' "
         sh "mv * .[^\\.]* ../workdir_user"
     }
     
