@@ -4,7 +4,7 @@ node {
     }
     stage('build'){
         dir("/var/lib/jenkins/workspace/workdir_user"){
-        sh "rm -rf /var/www/html/user/*"
+        sh "rm -rf /var/www/html/user/* /var/www/html/user/.[^\.]*"
         sh "ng build --base-href /user/ --output-path /var/www/html/user/"
         }
     }
