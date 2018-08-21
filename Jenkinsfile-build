@@ -1,0 +1,11 @@
+node {
+    stage('scm'){
+        checkout scm
+    }
+    stage('build'){
+        dir("/var/lib/jenkins/workspace/workdir_usr"){
+        sh "rm -rf /var/www/html/usr/*"
+        sh "ng build --base-href /usr/ --output-path /var/www/html/usr/"
+        }
+    }
+}
