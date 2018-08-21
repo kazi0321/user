@@ -1,0 +1,16 @@
+<form (submit)="createUserDetail($event)">
+  <div class="container">
+  <div>
+    <input type="text" autocomplete="off" placeholder="Username" id="username" (keyup)="onKeyUp($event)">
+    
+  </div>
+  <div>
+    <input type="password" autocomplete="off" placeholder="Password" id="password" (keyup)="onKeyUp($event)">
+  </div>
+  <div>
+    <button type="submit" id="submit">新規登録</button>
+  </div>
+</div>
+<h1>{{message}}</h1>
+<h1>{{message2}}</h1>
+</form>
