@@ -26,7 +26,7 @@ interface myData {
       col:    string,
       row:    string
     }
-  }
+  }[]
 }
 
 interface isLoggedIn {

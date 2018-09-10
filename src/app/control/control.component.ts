@@ -21,7 +21,7 @@ export class ControlComponent implements OnInit {
     this.user.isLoggedIn().subscribe(data => {
       if(data.status) {
         this.user.getSomeData().subscribe(data => {
-          this.message = data.message
+          this.message = data.username
         })
       } else {
         this.router.navigate(['login'])
