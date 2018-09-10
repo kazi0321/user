@@ -11,14 +11,19 @@ import { AuthService } from '../auth.service';
 export class LogoutComponent implements OnInit {
 
   constructor(private user: UserService, private router: Router, private auth: AuthService) { }
+  
+  message="loading"
 
   ngOnInit() {
     this.user.logout().subscribe(data => {
       if(data.success) {
         //this.router.navigate(['login'])
-        window.location.assign("http://172.20.145.140/")
+        //this.router.navigate([''])
+        //window.location.assign("http://172.20.145.140/user")
+        this.message="成功"
       } else {
-        window.alert('Some problem')
+        this.message="失敗"
+        //window.alert('Some problem')
       }
     })
   }

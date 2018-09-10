@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
 
     this.auth.getUserDetails(username, password).subscribe(data => {
       if(data.success) {
-        this.router.navigate(['control'])
+        //this.router.navigate(['control'])
+        window.location.assign("http://172.20.145.140/home")
         //this.auth.setLoggedIn(true)
       } else {
         window.alert(data.message)
