@@ -12,7 +12,11 @@ node {
     
     stage('mv'){
         sh "mkdir -p ../workdir_user"
-        sh "rm -rf `find ../workdir_user/* -not -name 'node_modules/*'`"
+        sh "mkdir -p ../node"
+        sh "mkdir -p ../workdir_user/node_modules"
+        sh "mv ../workdir_user/node_modules ../node 2>/dev/null"
+        sh "rm -fr ../workdir_user/* ../workdir_user/.* | echo skip"
+        sh "mv ../node/node_modules ../workdir_user"
         sh "mv * .[^\\.]* ../workdir_user"
     }
     
