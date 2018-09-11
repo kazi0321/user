@@ -26,6 +26,19 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      Headless_Firefox: {
+        base: 'Firefox',
+        flags: []
+      },
+      Headless_Chrome: {
+        base: 'Chrome',
+        flags: [
+          '--no-sandbox',
+          '--disable-gpu'
+        ]
+      }
+    },
     singleRun: false
   });
 };
