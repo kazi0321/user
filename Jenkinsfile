@@ -23,8 +23,8 @@ node {
     stage('build'){
         dir("/var/lib/jenkins/workspace/workdir_user"){
         sh "npm install"
-        sh "ng test --varbose >tmp"
-        sh "if [ `wc -l tmp |awk '{ print \$1 }'` -gt 0 ] ; then cat SIPPAI; else echo SEIKOU ; fi"
+        sh "xvfb-run ng e2e ; echo \$? > tmp | echo skip"
+        sh "if `cat tmp | grep 1` ; then cat SIPPAI; else echo SEIKOU ; fi"
         }
     }
 }
