@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
 
   constructor(private user: UserService, private router: Router, private auth: AuthService) { }
   
-  message="loading"
+  message="ログアウト処理中"
 
   ngOnInit() {
     this.user.logout().subscribe(data => {
@@ -20,9 +20,9 @@ export class LogoutComponent implements OnInit {
         //this.router.navigate(['login'])
         //this.router.navigate([''])
         //window.location.assign("http://172.20.145.140/user")
-        this.message="成功"
+        this.message="ログアウトに成功しました"
       } else {
-        this.message="失敗"
+        this.message="ログアウトに失敗しました"
         //window.alert('Some problem')
       }
     })

@@ -10,6 +10,12 @@ import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { LogoutComponent } from './logout/logout.component';
 import { Validation } from './validation';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +27,12 @@ import { Validation } from './validation';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [AuthService,UserService,Validation],
   bootstrap: [AppComponent]
