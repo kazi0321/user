@@ -1,4 +1,4 @@
-
+<!--
 <form (submit)="loginUser($event)">
   <div class="container">
   <div>
@@ -12,4 +12,31 @@
     <button type="button" id="signup" routerLink="/signup">新規登録</button>
   </div>
 </div>
+</form>
+-->
+<form class=login-form (submit)="loginUser($event)">
+  <mat-form-field class="login-form-width">
+    <input matInput placeholder="ユーザ名" id=username [formControl]="usernameFormControl"
+    [errorStateMatcher]="Matcher">
+    <mat-hint>登録した名前を入力してね！</mat-hint>
+    <mat-error *ngIf="usernameFormControl.hasError('required')">
+      ユーザ名は <strong>必須項目</strong>です
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="login-form-width">
+      <input matInput placeholder="パスワード" id=password [formControl]="passwordFormControl"
+      [errorStateMatcher]="Matcher" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-hint>登録したパスワードを入力してね！</mat-hint>
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        パスワードは <strong>必須項目</strong>です
+      </mat-error>
+  </mat-form-field>
+  <br>
+  <br>
+  <div class="button-row">
+    <button mat-stroked-button type="submit" id="submit">ログイン</button>
+    <button mat-stroked-button type="button" id="signup" routerLink="/signup">新規登録へ</button>
+  </div>
 </form>
