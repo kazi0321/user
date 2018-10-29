@@ -16,14 +16,32 @@
 <h1>{{message2}}</h1>
 </form>
 -->
-<form class=signup-form (submit)="loginUser($event)">
-  <mat-form-field class="signup-form-width">
-    <input matInput placeholder="ユーザ名" id=username (keyup)="onKeyUp($event)">
+<form class=signup-form (submit)="createUserDetail($event)">
+  <mat-form-field class="singup-form-width">
+    <input matInput placeholder="ユーザ名" id=username [formControl]="usernameFormControl" [errorStateMatcher]="Matcher">
+    <mat-hint>登録する名前を入力してね！</mat-hint>
+    <mat-error *ngIf="usernameFormControl.hasError('required')">
+      ユーザ名は
+      <strong>必須項目</strong>です
+    </mat-error>
   </mat-form-field>
-  <mat-form-field class="signup-form-width">
-    <input matInput placeholder="パスワード" id=password (keyup)="onKeyUp($event)">
+  <br>
+  <mat-form-field class="singup-form-width">
+    <input matInput placeholder="パスワード" id=password [formControl]="passwordFormControl" 
+    [errorStateMatcher]="Matcher" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-hint>登録するパスワードを入力してね！</mat-hint>
+    <mat-error *ngIf="passwordFormControl.hasError('required')">
+      パスワードは
+      <strong>必須項目</strong>です
+    </mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('pattern') && !passwordFormControl.hasError('required')">
+        <a (click)="openDialog()">※パスワードポリシー</a>
+    </mat-error>
   </mat-form-field>
+  <br>
+  <br>
   <div class="button-row">
-    <button mat-stroked-button type="button" id="signup" routerLink="/signup">新規登録</button>
+    <button mat-stroked-button type="button" id="submit">新規登録</button>
   </div>
 </form>

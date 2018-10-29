@@ -3,8 +3,6 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {MyErrorStateMatcher} from '../errorstatematcher';
-import { Validation } from 'src/app/validation';
-
 
 @Component({
   selector: 'app-login',
@@ -14,20 +12,21 @@ import { Validation } from 'src/app/validation';
 
 
 export class LoginComponent implements OnInit {
-  
+
   usernameFormControl = new FormControl('', [
     Validators.required
   ]);
-
   passwordFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$')
   ]);
   Matcher = new MyErrorStateMatcher();
+  hide = true;
 
 
   constructor(private auth: AuthService, 
-              private router: Router) { }
+              private router: Router,
+            ) { }
 
   ngOnInit() {
   }
